@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  s3-uploader:
+    image: s3-uploader:latest
+    build:
+      context: .
+    environment:
+      AWS_ACCESS_KEY_ID: "ACCESS_KEY_ID"
+      AWS_SECRET_ACCESS_KEY: "SECRET_ACCESS_KEY"
+      S3_ENDPOINT: "https://s3.waw3-2.cloudferro.com:443"
+      S3_BUCKET: "upload-test-container"
+      FILE_PATH: "/files/test.pdf"
+      OBJECT_NAME: "path/test.pdf"
+    volumes:
+      - ./files:/files
